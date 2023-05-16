@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var data = ["강현서", "권서현","김경선","조현주","김연수"];
+	function pro(){
+		var str="<ul>";
+		for(i=0;i<data.length;i++){
+			var name=data[i];
+			str += "<li>"+name+"</li>";
+		}
+		str+="</ul>";
+		document.getElementById("list").innerHTML=str;
+	}
+</script>
+</head>
+<body>
+	<h2>스케치업</h2>
+	<div id="list"></div>
+	<button onclick="pro()">출력하기</button>
+</body>
+</html>

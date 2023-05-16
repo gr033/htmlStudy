@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function pro(){
+		var name = document.getElementById("name").value;
+		var kor = eval(document.getElementById("kor").value);
+		var eng = eval(document.getElementById("eng").value);
+		var math = eval(document.getElementById("math").value);
+		var sum = kor+eng+math;
+		var avg = sum/3;
+		var grade = "";
+		document.getElementById("avg").innerHTML=avg;
+		if(0<=avg && avg<=20){grade = "F";}
+		else if(20<avg && avg<=40){grade="D";}
+		else if(40<avg && avg<=60){grade="C";}
+		else if(60<avg && avg<=80){grade="B";}
+		else if(80<avg && avg<=100){grade="A";}
+		document.getElementById("grade").innerHTML=grade;
+		document.getElementById("sum").innerHTML=sum;
+		document.getElementById("name1").innerHTML=name;
+	}
+</script>
+</head>
+<body>
+<!-- 이름, 국어, 영어, 수학을 입력받아 총점과 평균을 구하여 출력하고
+	 평균에 따라 A,B,C,D,E,F를 판별하여 출력하도록 하라.
+	 화면 구성은 자유롭게-->
+	 <h1>성적 산출</h1>
+	 <table border="">
+	 	<tr>
+	 		<td>이름</td>
+	 		<td><input type="text" id="name"></td>
+	 	</tr>
+	 	<tr>
+	 		<td>국어</td>
+	 		<td><input type="text" id="kor"></td>
+	 	</tr>
+	 	<tr>
+	 		<td>영어</td>
+	 		<td><input type="text" id="eng"></td>
+	 	</tr>
+	 	<tr>
+	 		<td>수학</td>
+	 		<td><input type="text" id="math"></td>
+	 	</tr>
+	 </table>
+	 <button onclick="pro()">성적 확인</button><br>
+	 이름: <span id="name1"></span><br>
+	 총점: <span id="sum"></span><br>
+	 평균 성적: <span id="avg"></span><br>
+	 학점: <span id="grade"></span>
+</body>
+</html>

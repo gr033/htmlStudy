@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<img src="" id="yogi">
+<script type="text/javascript">
+	var today = new Date();
+	var hours = today.getHours();
+	if(hours<17){
+		alert("오전입니다.");
+		document.getElementById("yogi").src="sun.png";
+	}
+	if(hours>=17){
+		alert("오후입니다.");
+		document.getElementById("yogi").src="moon.png";
+	}
+</script>
+</body>
+</html>

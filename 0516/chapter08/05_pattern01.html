@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<meta name="viewport" content="user-scalable=no, initial-scale=1">
+<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	body{
+		width: 960px;
+		margin: 0 auto;
+		overflow: hidden;
+	}
+	#menu{
+		width: 260px;
+		/*float: left;*/
+		float: right;
+	}
+	#section{
+		width: 700px;
+		float: right;
+	}
+	@media screen and (max-width: 767px){
+		body{width: auto;}
+		#menu{width: auto; float: none;}
+		#section{width: auto; float: none;}
+	}
+</style>
+</head>
+<body>
+	<div id="menu">
+		<ul>
+			<li>메뉴A</li>
+			<li>메뉴B</li>
+			<li>메뉴C</li>
+		</ul>
+	</div>
+	<div id="section">
+		<h1>서울 한낮 30도…때이른 더위에 자외선·오존 주의</h1>
+		<p>오늘은 어제보다 더 덥습니다.
+			전국에 30도를 웃도는 한여름 더위가 예상됩니다.
+			더운 날씨 속에 오존농도도 높아질 거로 예상돼 외출할 때 
+			신경 쓰셔야겠습니다.이세흠 기상전문기자입니다.
+		</p>
+	</div>
+</body>
+</html>

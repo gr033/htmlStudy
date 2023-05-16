@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function kim(){
+		alert("kim");
+	}
+	function lee(){
+		alert("lee");
+	}
+	function pro(arr, methodName){
+		var total=0;
+		for(i=0;i<arr.length;i++){
+			total += arr[i];
+		}
+		alert(total);
+		methodName();
+	}
+	data1 =[10,20,30];
+	data2=[40,50,60];
+	pro(data1, kim);
+	pro(data2, lee);
+</script>
+</head>
+<body>
+</body>
+</html>
