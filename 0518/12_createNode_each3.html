@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	.high_light{
+		background: yellow;
+	}
+	
+	.active{
+		background: pink;
+	}
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		//미래에 만들어지 tr에는 이벤트가 동작하지 않아요!
+		/*
+		$("tr").click(function(){
+			alert("OK");
+		});*/
+		var input = $("input[type=text]");
+		var td ;
+		$(document).on("click", ".row", function(){
+			td = $(this).find("td");
+			
+			for(i=0; i<4; i++){
+				$(input[i]).val(  $(td[i]).html() );
+			}
+			$(".row").removeClass("active");
+			$(this).addClass("active");
+		});
+		
+		$(document).on("mouseenter", ".row", function(){
+			$(".row").removeClass("high_light");
+			$(this).addClass("high_light");
+		});
+		
+		
+		$("#btnUpdate").click(function(){
+			var name = $(input[0]).val();
+			var kor = eval( $(input[1]).val() );
+			var eng = eval( $(input[2]).val() );
+			var math = eval( $(input[3]).val() );
+			var tot = kor+eng+math;
+			var avg = tot/3;
+			
+			$(td[0]).html(name);
+			$(td[1]).html(kor);
+			$(td[2]).html(eng);
+			$(td[3]).html(math);
+			$(td[4]).html(tot);
+			$(td[5]).html(avg);
+			
+		});
+		
+		
+		$("#btnAdd").click(function(){
+			var tr = $("<tr></tr>");
+			$(tr).addClass("row");
+			var tot = 0;
+			$.each(input, function(i){
+				$(tr).append( $("<td></td>").html( $(this).val() ) );
+				if(i != 0){
+					tot += eval( $(this).val() );
+				}
+			});
+			var avg = tot/3;
+			$(tr).append( $("<td></td>").html(tot) );
+			$(tr).append( $("<td></td>").html(avg) );
+			$("table").append(tr);	
+			$(input).val("");
+			$(input[0]).focus();
+		});
+	});
+</script>
+</head>
+<body>	
+	<table border="1" width="80%">
+		<tr>
+			<td>이름</td>
+			<td>국어</td>
+			<td>영어</td>
+			<td>수학</td>
+			<td>총점</td>
+			<td>평균</td>
+		</tr>
+	</table>
+	<hr>
+	이름 : <input type="text"><br>
+	국어 : <input type="text"><br>
+	영어 : <input type="text"><br>
+	수학 : <input type="text"><br>
+	<input type="button" value="추가" id="btnAdd">
+	<input type="button" value="수정" id="btnUpdate">
+</body>
+</html>

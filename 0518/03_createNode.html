@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#btnAdd").click(function(){
+			var h1 = $("<h1></h1>").html("hello");
+			$("#output").append(h1);
+			/*
+			var h1 = document.createElement("h1");
+			var txt = document.createTextNode("hello");
+			h1.appendChild(txt);
+			var output = document.querySelector("#output");
+			output.appendChild(h1);
+			*/
+		});
+	});
+</script>
+</head>
+<body>
+	<hr>
+		<div id="output"></div>
+	<hr>
+		<button id="btnAdd">노드추가</button>
+</body>
+</html>

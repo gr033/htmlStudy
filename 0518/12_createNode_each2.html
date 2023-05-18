@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+//테이블에서 선택한 행의 정보를 각각의 입력상자에 출력하고, 테이블에 마우스가 올라간 행을 하이라이트설정하고 
+//클릭한 행에 다른 색상으로 배경을 설정한다.
+	$(function(){
+		var input = $("input[type=text]");
+		
+		$("#btnAdd").click(function(){
+			var tr = $("<tr></tr>");
+			var tot = 0;
+			$.each(input, function(i){
+				$(tr).append( $("<td></td>").html( $(this).val() ) );
+				if(i != 0){
+					tot += eval( $(this).val() );
+				}
+			});
+			var avg = tot/3;
+			$(tr).append( $("<td></td>").html(tot) );
+			$(tr).append( $("<td></td>").html(avg) );
+			$("table").append(tr);	
+			$(input).val("");
+			$(input[0]).focus();
+			
+			$(tr).click(function(){})
+		});
+	});
+</script>
+</head>
+<body>	
+	<table border="1" width="80%">
+		<tr>
+			<td>이름</td>
+			<td>국어</td>
+			<td>영어</td>
+			<td>수학</td>
+			<td>총점</td>
+			<td>평균</td>
+		</tr>
+	</table>
+	<hr>
+	이름 : <input type="text"><br>
+	국어 : <input type="text"><br>
+	영어 : <input type="text"><br>
+	수학 : <input type="text"><br>
+	<input type="button" value="추가" id="btnAdd">
+</body>
+</html>

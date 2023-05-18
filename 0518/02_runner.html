@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		let n=0;
+		setInterval(function(){
+			$("#man").attr("src", "./man/"+(n%15)+".png");
+			n++;
+		},50);
+	});
+</script>
+</head>
+<body>
+	<img id="man" src="./man/0.png">
+</body>
+</html>

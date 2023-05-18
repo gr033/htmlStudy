@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	.square{
+		width: 280px;
+		height: 170px;
+		border: solid 10px orange;
+		margin: 20px;
+		padding: 20px;
+		border-radius: 40px;
+		margin: 10px;
+		padding: 10px;
+		display: inline-block;
+	}
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		let data = [
+			{no:1, name:"축구공1", price:35000, qty:10, fname:"ball1.jpg"},
+			{no:1, name:"축구공2", price:45000, qty:20, fname:"ball2.jpg"},
+			{no:1, name:"축구공3", price:55000, qty:30, fname:"ball3.jpg"},
+			{no:1, name:"축구공4", price:65000, qty:40, fname:"ball4.jpg"},
+			{no:1, name:"축구공5", price:75000, qty:50, fname:"ball5.jpg"}
+		];
+		$.each(data, function(){
+			let div = $("<div></div>");
+			let table = $("<table></table>");
+			let tr = $("<tr></tr>");
+			let td1 = $("<td></td>");
+			let td2 = $("<td></td>");
+			let img = $("<img/>").attr({
+				src: this.fname,
+				width: 150,
+				height: 150
+			});
+			let no = $("<p></p>").html("번호: "+this.no);
+			let name = $("<p></p>").html("이름: "+this.name);
+			let price = $("<p></p>").html("가격: "+this.price);
+			let qty = $("<p></p>").html("수량: "+this.qty);
+			
+			$(td1).append(img);
+			$(td2).append(no, name, price, qty);
+			$(tr).append(td1, td2);
+			$(table).append(tr);
+			$(div).append(table);
+			$(div).addClass("square");
+			$("#output").append(div);
+		});
+	});
+</script>
+</head>
+<body>
+	<div id="output"></div>
+</body>
+</html>

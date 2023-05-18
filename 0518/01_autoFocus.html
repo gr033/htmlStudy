@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		/*input이 두개니까 input은 배열*/
+		let input = $("input");
+		$(input[0]).focus();
+		$(input[0]).keyup(function(){
+			if($(input[0]).val().length>=6){
+				$(input[1]).focus();
+			}
+		});
+		$(input[1]).keydown(function(event){
+			if($(this).val().length==0 && event.keyCode==8){
+				$(input[0]).focus();
+			}
+		});
+	});
+</script>
+</head>
+<body>
+	<input type="text" size="6" maxlength="6"> - 
+	<input type="text" size="7" maxlength="7">
+	<hr>
+	<input type="text" size="2" maxlength="2">
+</body>
+</html>

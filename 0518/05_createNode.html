@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		let arr = ["김연수","강현서","심유리","염혜원","이아현","정소희"];
+		for(i=0;i<arr.length;i++){
+			let li = $("<li></li>").html(arr[i]);
+			$("ul").append(li);
+		}
+	});
+</script>
+</head>
+<body>
+	<h2>스케치업 팀 구성원</h2>
+	<hr>
+	<ul></ul>
+</body>
+</html>
