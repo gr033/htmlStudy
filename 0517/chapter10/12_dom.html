@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+   window.onload = function(){
+      let clock = document.getElementById("clock");
+      document.getElementById("btn").onclick = function(){
+         setInterval(function(){
+            let now = new Date();
+            clock.innerHTML = now.toString();
+         },1000);
+      }
+   }
+</script>
+</head>
+<body>
+   <h1 id = "clock"></h1>
+   <hr>
+   <button id = "btn">현재 시각 출력</button>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	#content{
+		visibility: hidden;
+	}
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+   <script type="text/javascript">
+   $(function(){
+	   $("#btnShow").click(function(){
+		   $("#content").css("visibility","visible");
+	   });
+	   $("#btnHide").click(function(){
+		   $("#content").css("visibility","hidden");
+	   });
+   });
+</script>
+</head>
+<body>
+	<h2>보이고 안보이고</h2>
+	<hr>
+	<div id="content">
+		<h2>간호법 ‘거부권’ 반발에…국민의힘 “해결책 찾겠다”·민주 “재표결”</h2>
+		<p>대통령의 간호법 거부권 행사에 반발해 간호사 단체가 집단행동을 예고한 가운데, 
+		민주당은 재표결 입장을 국민의힘은 후속 입법안 마련을 각각 내세우며, 책임 공방을 
+		벌였습니다. 대한간호협회는 오늘 오전 기자회견을 통해 "불법진료에 대한 의사의 
+		업무지시를 거부하는 등의 준법투쟁을 전개할 것"이라고 밝혔습니다.</p>
+	</div>
+	<hr>
+	<button id="btnShow">나타내기</button>
+	<button id="btnHide">사라지기</button>
+</body>
+</html>

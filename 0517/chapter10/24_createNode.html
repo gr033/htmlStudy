@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	window.onload=function(){
+		var btn = document.querySelector("button");
+		btn.onclick=function(){
+			var data = document.querySelector("input").value;
+			var li = document.createElement("li");
+			var txt = document.createTextNode(data);
+			li.appendChild(txt);
+			var ul = document.querySelector("ul");
+			ul.appendChild(li);
+		}
+	}
+</script>
+</head>
+<body>
+	<h2>직장인이 좋아하는 점심메뉴</h2>
+	<ul></ul>
+	<hr>
+	<input type="text">
+	<button>추가</button>
+</body>
+</html>

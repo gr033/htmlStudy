@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+   <script type="text/javascript"> 
+   /*$(선택자).hover(함수1, 함수2);
+   */
+      $(document).ready(function(){
+    	  $("h1").hover(function(){
+    		  $(this).css({
+     			 background:"red",
+     			 color:"white"
+     		 });
+    	  },function(){
+    		  $(this).css({
+    			  background:"",
+    			  color:"black"
+    		  });
+    	  });
+    	  /*
+    	  $("h1").mouseenter(function(){
+    		 $(this).css({
+    			 background:"red",
+    			 color:"white"
+    		 });
+    	  });
+    	  $("h1").mouseleave(function(){
+    		  $(this).css({
+    			  background:"",
+    			  color:"black"
+    		  });
+    	  });
+    	  */
+      });
+   </script>
+</head>
+<body>
+	<h1>Click</h1>
+</body>
+</html>

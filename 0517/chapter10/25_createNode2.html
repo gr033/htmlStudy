@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	window.onload = function(){
+		var btnAdd = document.querySelector("#btnAdd");
+		btnAdd.onclick = function(){
+			var name = document.querySelector("#name").value;
+			var kor = eval(document.querySelector("#kor").value);
+			var eng = eval(document.querySelector("#eng").value);
+			var math = eval(document.querySelector("#math").value);
+			var tot = kor + eng + math;
+			var avg = tot/3;
+			
+			var tr = document.createElement("tr");
+			var td_name = document.createElement("td");
+			var td_kor = document.createElement("td");
+			var td_eng = document.createElement("td");
+			var td_math = document.createElement("td");
+			var td_tot = document.createElement("td");
+			var td_avg = document.createElement("td");
+			
+			var txt_name = document.createTextNode(name);
+			var txt_kor = document.createTextNode(kor);
+			var txt_eng = document.createTextNode(eng);
+			var txt_math = document.createTextNode(math);
+			var txt_tot = document.createTextNode(tot);
+			var txt_avg = document.createTextNode(avg);
+			
+			td_name.appendChild(txt_name);
+			td_kor.appendChild(txt_kor);
+			td_eng.appendChild(txt_eng);
+			td_math.appendChild(txt_math);
+			td_tot.appendChild(txt_tot);
+			td_avg.appendChild(txt_avg);
+			
+			tr.appendChild(td_name);
+			tr.appendChild(td_kor);
+			tr.appendChild(td_eng);
+			tr.appendChild(td_math);
+			tr.appendChild(td_tot);
+			tr.appendChild(td_avg);
+			
+			var student_list = document.querySelector("#student_list");
+			student_list.appendChild(tr);
+			
+			document.querySelector("#name").value = "";
+			document.querySelector("#kor").value = "";
+			document.querySelector("#eng").value = "";
+			document.querySelector("#math").value = "";
+			
+			
+		}
+	}
+</script>
+</head>
+<body>
+	<h3>쌍용고등학교 3학년 9반 시험 결과</h3>
+	<hr>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>이름</th>
+				<th>국어</th>
+				<th>영어</th>
+				<th>수학</th>
+				<th>총점</th>
+				<th>평균</th>
+			</tr>
+		</thead>
+		<tbody id="student_list"></tbody>
+	</table>
+	<hr>
+	이름 : <input type="text" id="name"><br>
+	국어 : <input type="text" id="kor"><br>
+	영어 : <input type="text" id="eng"><br>
+	수학 : <input type="text" id="math"><br>
+	<button id="btnAdd">추가</button>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

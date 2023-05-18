@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript">
+		window.onload=function(){
+			document.getElementById("btn").onclick=function(){
+				var img = document.querySelector("img");
+				var src = img.src;
+				var width = img.width;
+				var index = img.getAttribute("index");
+				alert(index);
+			}
+		}
+	</script>
+</head>
+<body>
+	<img src = "ball1.jpg" width="100" height="100" index="1001"><br>
+	<hr>
+	<button id="btn">속성 확인하기</button>
+</body>
+</html>

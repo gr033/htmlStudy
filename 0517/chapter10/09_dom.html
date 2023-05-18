@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	window.onload = function(){
+		document.getElementById("btnAdd").onclick = function(){
+			var p = document.querySelector("p");
+			p.setAttribute("no",1001);
+		}
+		
+		document.getElementById("btnRead").onclick = function(){
+			var p = document.querySelector("p");
+			var no = p.getAttribute("no");
+			alert(no);
+		}
+		
+		
+	}
+</script>
+</head>
+<body>
+	<p>홍길동</p>	
+	<hr>
+	<button id="btnAdd">속성추가하기</button>
+	<button id="btnRead">속성읽어오기</button>
+</body>
+
+
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+   <script type="text/javascript"> 
+      $(document).ready(function(){
+    	  $("#btn").click(function(){
+    	  var data = "<h2><a href='http://www.naver.com'>네이버</a></h2>";
+    	  $("#a").text(data);
+    	  $("#b").html(data);
+    	  })
+      });
+   </script>
+</head>
+<body>
+	<div id="a"></div>
+	<div id="b"></div>
+	<hr>
+	<button id="btn">text()와 html()</button>
+</body>
+</html>

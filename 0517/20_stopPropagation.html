@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	div, p{
+		margin: 10px;
+		padding: 10px;
+		border: solid 1px black;
+	}
+	div{
+		width: 400px;
+		height: 400px;
+	}
+	p{
+		width: 300px;
+		height: 300px;
+	}
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+   <script type="text/javascript">
+   $(function(){
+	   $("div").click(function(){
+		   $(this).css("background", "pink");
+	   });
+	   $("p").click(function(){
+		   $(this).css("background", "yellow");
+	   });
+	   $("a").click(function(e){
+		   $(this).html("네이버");
+		   e.preventDefault();		//기본 이벤트 제거
+		   e.stopPropagation();	//부모 노드로의 이벤트 전파 제거
+	   });
+   });
+   </script>
+</head>
+<body>
+	<div>
+		<p>
+			<a href="http://www.naver.com">Naver</a>
+		</p>
+	</div>
+</body>
+</html>

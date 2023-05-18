@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	.box{
+		width: 100px;
+   		height: 100px;
+    	background: pink;
+	} 
+	.box_blue{
+		background: blue;
+	}
+	.box_green{
+		background: green;
+	}
+	.box_orange{
+		background: orange;
+	}
+	.box_red{
+		background: red;
+	}
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+   <script type="text/javascript"> 
+      $(document).ready(function(){
+    	  $("div").addClass("box");
+    	  $("div").click(function(){
+    		  $(this).addClass("box_red");
+    	  });
+    	  $("div").mouseenter(function(){
+    		  $(this).addClass("box_blue");
+    	  });
+    	  $("div").mouseleave(function(){
+    		  $(this).addClass("box_orange");
+    	  });
+      });
+   </script>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+</html>

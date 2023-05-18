@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	window.onload=function(){
+		var btn = document.querySelector("#btn");
+		btn.onclick = function(){
+			btn.style.color="red";
+			/*기본 이벤트 제거*/
+			return false;
+		}
+	}
+</script>
+</head>
+<body>
+	<a id="btn" href="http://www.naver.com">버튼</a>
+</body>
+</html>

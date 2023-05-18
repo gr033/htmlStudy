@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	window.onload=function(){
+		var btn = document.querySelector("button");
+		btn.onclick=function(){
+			var node = "<h1>Hello</h1>";
+			var div = document.querySelector("div");
+			div.innerHTML = node;
+		}
+	}
+</script>
+</head>
+<body>
+	<hr>
+	<div></div>
+	<hr>
+	<button>노드생성</button>
+</body>
+</html>
