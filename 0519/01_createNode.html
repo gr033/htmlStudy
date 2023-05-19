@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style type="text/css">
+	
+</style>
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		let data = [
+			{dno:10, dname:"기획팀", dloc:"서교동"},
+			{dno:20, dname:"영업팀", dloc:"판교"},
+			{dno:30, dname:"개발팀", dloc:"판교"}
+		];
+		//배열의 요소만큼 반복실행하여 행을 만들어 tbody에 추가
+		$.each(data, function(){
+			let td1 = $("<td></td>").html(this.dno);
+			let td2 = $("<td></td>").html(this.dname);
+			let td3 = $("<td></td>").html(this.dloc);
+			let tr = $("<tr></tr>");
+			tr.append(td1, td2, td3);
+			$("tbody").append(tr);
+		});
+	});
+</script>
+</head>
+<body>
+	<h2>부서목록</h2>
+	<table border="1" width="80%">
+		<thead>
+			<tr>
+				<th>부서번호</th>
+				<th>부서명</th>
+				<th>부서위치</th>
+			</tr>
+		</thead>
+		<tbody></tbody>
+	</table>
+</body>
+</html>

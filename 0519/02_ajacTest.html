@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style type="text/css">
+	
+</style>
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	//자바스크립트에서 서버를 요청하는 기술: Ajax
+	$.ajax({
+		url: "responseJSON.jsp",
+		success: function(data){
+			console.log(data);
+		}
+	})
+});
+</script>
+</head>
+<body>
+
+</body>
+</html>
