@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style type="text/css">
+	img{
+		width: 70px;
+		height: 70px;
+	}
+	table{
+		width: 80%;
+	}
+</style>
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+//Ajax 통신을 하여 서버의 프로그램 listGoods.jsp를 요청하여 상품 목록을 출력하는 스크립트를 작성
+	$(function(){
+		function listGoods(){
+			$("#tbody_goods").empty();
+			$.ajax({
+				url: "listGoods.jsp",
+				success: function(data){
+					$.each(data, function(){
+						let img_fname = $("<img/>").attr("src", "goods/"+this.fname);
+						let td_no = $("<td></td>").html(this.no);
+						let td_name = $("<td></td>").html(this.name);
+						let td_price = $("<td></td>").html(this.price);
+						let td_qty = $("<td></td>").html(this.qty);
+						let td_fname = $("<td></td>").html(img_fname);
+						let tr = $("<tr></tr>");
+						tr.append(td_no, td_name, td_price, td_qty, td_fname);
+						$(tr).addClass("row");
+						$("#tbody_goods").append(tr);
+					});
+				}
+			});
+		}
+		listGoods();
+	})
+</script>
+</head>
+<body>
+	<h2>상품 목록</h2>
+	<table border="1">
+		<thead>
+			<tr>
+				<th id="title">상품번호</th>
+				<th id="title">상품이름</th>
+				<th id="title">상품가격</th>
+				<th id="title">상품수량</th>
+				<th id="title">상품사진</th>
+			</tr>
+		</thead>
+		<tbody id="tbody_goods"></tbody>
+	</table>
+</body>
+</html>

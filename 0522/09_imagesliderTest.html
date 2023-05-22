@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+.animation_canvas{
+	position: relative;
+	width: 600px;
+	height: 400px;
+	overflow: hidden;
+}
+
+.slider_image{
+	float: left;
+	width: 600px;
+	height: 400px;
+}
+
+.slider_panel{
+	width: 3000px;
+	position: relative;
+}
+
+.slider_text_panel{
+	position: relative; left: 50px; top: 200px; 	
+}
+
+.slider_text{
+	position: absolute;
+	width: 250px;
+	height: 150px;
+}
+
+.control_button{
+	background: url("point_button.png");
+	width: 12px;
+	height: 46px;
+	position: relative;
+	float: left;
+	cursor: pointer;
+}
+
+.control_panel{
+	position: absolute;
+	left: 270px;
+	top: 380px;
+	height:13px;
+	overflow: hidden;
+}
+
+.control_button:hover{
+	top:-16px;
+}
+.control_button:active{
+	top:-32px;
+}
+
+
+.active{
+	top: -32px;
+}
+
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".slider_text").css({left:-300});
+	
+	$(".slider_text").each(function(index){
+		$(this).attr("data-index",index);		
+	});
+	
+	$(".control_button").each(function(index){
+		$(this).attr("data-index",index);
+	})
+	
+	
+	//$.each(배열, 함수)
+	//$(배열).each(함수);
+	
+	function moveSlider(index){
+		var left = -(index*600);
+		console.log(left);
+		$(".slider_panel").animate({
+			left:left
+		}, 'slow');
+		
+		$(".slider_text[data-index="+index+"]").show().animate({
+			left:0
+		},'slow');
+		
+		$(".slider_text[data-index!="+index+"]").hide().animate({
+			left:-300
+		},'slow');
+		
+		$(".control_button[data-index="+index+"]").addClass("active");
+		$(".control_button[data-index!="+index+"]").removeClass("active");
+		
+	}
+	
+	$(".control_button").click(function(){
+		var index = $(this).attr("data-index");
+		moveSlider(index);
+	});
+	
+	var index = Math.round(Math.random()*4);
+	moveSlider(index);
+	
+});
+</script>
+</head>
+<body>
+	<div class="animation_canvas">
+		<div class="slider_panel">
+			<img src="../goods/cloth1.jpg" class="slider_image">
+			<img src="../goods/cloth2.jpg" class="slider_image">
+			<img src="../goods/cloth3.jpg" class="slider_image">
+			<img src="../goods/cloth4.jpg" class="slider_image">
+			<img src="../goods/cloth5.jpg" class="slider_image">			
+		</div>
+		<div class="slider_text_panel">
+			<div class="slider_text">
+				<h1>유니폼 1</h1>
+				<p>22/23 맨체스터시티 퓨마 홈 홀란드 그릴리쉬 유니폼 레플리카 축구 저지 맨시티</p>
+			</div>
+			<div class="slider_text">
+				<h1>유니폼 2</h1>
+				<p>22-23시즌 프리미어리그 맨시티 축구유니폼 홀란드 유니폼 홈 어웨이 원정 성인 유소년</p>
+			</div>
+			<div class="slider_text">
+				<h1>유니폼 3</h1>
+				<p>22-24년 한국 카타르 월드컵 대한민국 손흥민 국대 국가대표 축구 유니폼 저지 23년</p>
+			</div>
+			<div class="slider_text">
+				<h1>유니폼 4</h1>
+				<p>22/23 레알마드리드 홈 어센틱 유니폼 선수지급용 레알 유니폼 축구 풋살</p>
+			</div>
+			<div class="slider_text">
+				<h1>유니폼 5</h1>
+				<p>대한민국 유니폼 카타르월드컵 국가대표 축구복 손흥민 어린이축구유니폼 한국대표팀</p>
+			</div>
+		</div>
+		
+		<div class="control_panel">
+			<div class="control_button"></div>
+			<div class="control_button"></div>
+			<div class="control_button"></div>
+			<div class="control_button"></div>
+			<div class="control_button"></div>
+		</div>
+	</div>
+</body>
+</html>

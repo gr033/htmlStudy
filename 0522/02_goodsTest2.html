@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	.inner{
+		float: left;
+		margin: 10px;
+	}
+	.outer{
+		border: solid pink 5px;
+		width: 300px;
+		height: 200px;
+		border-radius: 30px;
+		padding: 10px;
+		margin: 10px;
+		float: left;
+	}
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+$(function(){	
+	var loadGoods = function(){
+		$.ajax({
+			url:"listGoods.jsp",
+			success:function( arr ){
+				$.each(arr, function(){
+					var outer = $("<div></div>").addClass("outer");
+					var inner1 = $("<div></div>").addClass("inner");
+					var inner2 = $("<div></div>").addClass("inner");
+					var img = $("<img/>").attr({
+						src:"../goods/"+this.fname,
+						width:100,
+						height:100
+					});
+					$(inner1).append(img);
+					var p1 = $("<p></p>").html("상품번호"+this.no);
+					var p2 = $("<p></p>").html("상품이름"+this.name);
+					var p3 = $("<p></p>").html("상품가격"+this.price);
+					var p4 = $("<p></p>").html("상품수량"+this.qty);
+					$(inner2).append(p1,p2,p3,p4);
+					$(outer).append(inner1, inner2);
+					$("#goodsList").append(outer);
+				});				
+			}
+		});
+	} //end loadGoods
+	
+	loadGoods();
+});
+</script>
+</head>
+<body>
+<div id="goodsList"></div>
+<!-- 
+	<div class="outer">
+		<div class="inner">
+		<img src="../goods/ball1.jpg" 
+						width="100" 
+						height="100"> </div>
+		<div class="inner">
+			<p>상품번호:1</p>
+			<p>상품명:축구공1</p>
+			<p>가격:35000</p>
+			<p>수량:10</p>
+		</div>	
+	</div>
+-->
+</body>
+</html>

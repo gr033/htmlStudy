@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		let addNode=function(){
+			let arr = ["Hello", "Korea", "Java", "html", "jsp", "javascript"];
+			for(data in arr){
+				$("body").append($("<h1></h1>").html(arr[data]));
+			}
+		}
+		$(window).scroll(function(){
+			let windowHeight = $(window).height();
+			let scrollTop = $(window).scrollTop();
+			let documentHeight = $(document).height();
+			console.log("창높이: "+windowHeight);
+			console.log("스크롤이 지나간 높이: "+scrollTop);
+			console.log("문서의 높이"+documentHeight);
+			console.log("창높이 + 스크롤 높이"+ (windowHeight+scrollTop));
+			if(windowHeight+scrollTop + 100 >=documentHeight){
+				console.log("끝에 도달함");
+				addNode();
+			}
+		});
+	});
+</script>
+</head>
+<body>
+	<h1>Hello</h1>
+	<h1>Korea</h1>
+	<h1>Java</h1>
+	<h1>html</h1>
+	<h1>jsp</h1>
+	<h1>javascript</h1>
+	<h1>Hello</h1>
+	<h1>Korea</h1>
+	<h1>Java</h1>
+	<h1>html</h1>
+	<h1>jsp</h1>
+	<h1>javascript</h1>
+	<h1>Hello</h1>
+	<h1>Korea</h1>
+	<h1>Java</h1>
+	<h1>html</h1>
+	<h1>jsp</h1>
+	<h1>javascript</h1>
+	<h1>Hello</h1>
+	<h1>Korea</h1>
+	<h1>Java</h1>
+	<h1>html</h1>
+	<h1>jsp</h1>
+	<h1>javascript</h1>
+	<h1>Hello</h1>
+	<h1>Korea</h1>
+	<h1>Java</h1>
+	<h1>html</h1>
+	<h1>jsp</h1>
+	<h1>javascript</h1>
+	<h1>Hello</h1>
+	<h1>Korea</h1>
+	<h1>Java</h1>
+	<h1>html</h1>
+	<h1>jsp</h1>
+	<h1>javascript</h1>
+	<h1>Hello</h1>
+	<h1>Korea</h1>
+	<h1>Java</h1>
+	<h1>html</h1>
+	<h1>jsp</h1>
+	<h1>javascript</h1>
+	<h1>Hello</h1>
+	<h1>Korea</h1>
+	<h1>Java</h1>
+	<h1>html</h1>
+	<h1>jsp</h1>
+	<h1>javascript</h1>
+	<h1>Hello</h1>
+	<h1>Korea</h1>
+	<h1>Java</h1>
+	<h1>html</h1>
+	<h1>jsp</h1>
+	<h1>javascript</h1>
+	<h1>Hello</h1>
+	<h1>Korea</h1>
+	<h1>Java</h1>
+	<h1>html</h1>
+	<h1>jsp</h1>
+	<h1>javascript</h1>
+	<h1>Hello</h1>
+	<h1>Korea</h1>
+	<h1>Java</h1>
+	<h1>html</h1>
+	<h1>jsp</h1>
+	<h1>javascript</h1>
+</body>
+</html>

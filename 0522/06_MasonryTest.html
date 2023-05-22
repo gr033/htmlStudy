@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style type="text/css">
+	.item{
+		margin: 5px;
+		width: 100px;
+		height: 100px;
+		background: white;
+		border-radius: 10px;
+		float: left;
+	}
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+	body{
+		background: #525252;
+	}
+	.small{ 
+		width: 100px;
+		height: 100px;
+	}
+	.normall{
+		width: 210px;
+		height: 210px;
+	}
+	.big{ 
+		width: 210px;
+		height: 430px;
+	}
+</style>
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#data").masonry({
+			itemSelector: ".item",
+			columnWidth: 110
+		});
+	});
+</script>
+</head>
+<body>
+	<div id="data">
+		<div class="item small"></div>
+		<div class="item big"></div>
+		<div class="item normal"></div>
+		<div class="item small"></div>
+		<div class="item small"></div>
+		<div class="item small"></div>
+		<div class="item normal"></div>
+		<div class="item normal"></div>
+		<div class="item small"></div>
+		<div class="item small"></div>
+		<div class="item big"></div>
+		<div class="item big"></div>
+		<div class="item small"></div>
+	</div>
+</body>
+</html>

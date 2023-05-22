@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+$(function(){	
+	var loadGoods = function(){
+		$.ajax({
+			url:"listGoods.jsp",
+			success:function( arr ){
+				$.each(arr, function(){
+					var tr = $("<tr></tr>");
+					var td1 = $("<td></td>").html(this.no);
+					var td2 = $("<td></td>").html(this.name);
+					var td3 = $("<td></td>").html(this.price);
+					var td4 = $("<td></td>").html(this.qty);
+					var img = $("<img/>").attr({
+						src:"../goods/"+this.fname,
+						width:50,
+						height:50
+					});
+					var td5 = $("<td></td>").append(img);
+					$(tr).append(td1, td2, td3, td4, td5);
+					$("#goodsList").append(tr);
+				});				
+			}
+		});
+	} //end loadGoods
+	
+	loadGoods();
+});
+</script>
+</head>
+<body>
+	<table border="1" width="80%">
+		<thead>
+			<tr>
+				<th>상품번호</th>
+				<th>상품명</th>
+				<th>가격</th>
+				<th>수량</th>
+				<th>이미지</th>
+			</tr>
+		</thead>
+		<tbody id="goodsList"></tbody>
+	</table>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style type="text/css">
+	img{
+		width: 50px;
+		height: 50px;
+	}
+	table{
+		display: inline-block;
+		border: solid 2px orange;
+		width: 300px;
+		height: 200px;
+		margin: 10px;
+		padding: 10px;
+		border-radius: 20px;
+	}
+	img{
+		width: 100px;
+		height: 100px;
+	}
+</style>
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+//Ajax 통신을 하여 서버의 프로그램 listGoods.jsp를 요청하여 상품 목록을 출력하는 스크립트를 작성
+	$(function(){
+		function listGoods(){
+			$("#tbody_goods").empty();
+			$.ajax({
+				url: "listGoods.jsp",
+				success: function(data){
+					$.each(data, function(){
+						let img = $("<img/>").attr("src", "goods/"+this.fname);
+						
+						let table = $("<table></table>");
+						let p1 = $("<p></p>").html("상품번호: "+this.no);
+						let p2 = $("<p></p>").html("상품이름: "+this.name);
+						let p3 = $("<p></p>").html("상품가격: "+this.price);
+						let p4 = $("<p></p>").html("상품수량: "+this.qty);
+						let div = $("<div></div>");
+						div.append(p1, p2, p3, p4);
+						let td1 = $("<td></td>").html(div);
+						let td2 = $("<td></td>").html(img);
+						let tr = $("<tr></tr>");
+						tr.append(td2, td1);
+						table.append(tr);
+						$("#goodslist").append(table);
+					});
+				}
+			});
+		}
+		listGoods();
+	})
+</script>
+</head>
+<body>
+	<h2>상품 목록</h2>
+	<hr>
+	<div id="goodslist">
+	
+	</div>
+</body>
+</html>
