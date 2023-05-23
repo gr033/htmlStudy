@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+			$.ajax({
+				url: "listDname.jsp",
+				success: function(data){
+					$.each(data, function(){
+						let option = $("<option value=\""+this.dno+"\"></option>").html(this.dname);
+						$("select").append(option);
+					});
+				$("select").change(function(){
+					let value = $("select>option:selected").val();
+					$("span").html(value);
+				});
+				}
+			});
+		listdata();
+	});
+</script>
+</head>
+<body>
+	<select>
+	</select>
+	<hr>
+	부서번호: <span></span>
+</body>
+</html>

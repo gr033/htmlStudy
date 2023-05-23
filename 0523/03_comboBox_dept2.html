@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js
+"></script>
+<script type="text/javascript">
+$(function(){
+	$("#deptList").change(function(){
+		var dno= $(this).val();
+		var data = {dno:dno};
+		$.ajax({
+			url:"listEmp.jsp",
+			data:data,
+			success:function(arr){
+				$("#empList").empty();
+				$.each(arr, function(){
+					var option = $("<option></option>").html(this.ename); 
+					$(option).attr("value",this.eno);
+					$("#empList").append(option);
+				});
+			}
+		});
+	});
+	$("#empList").change(function(){
+		let eno = $(this).val();
+		let data = {eno:eno};
+		$.ajax({
+			url: "enoInfo.jsp", 
+			data: data,
+			success:function(arr){
+			console.log(arr);	
+			let p1 = $("<p></p>").html("eno: "+arr.eno);
+			let p2 = $("<p></p>").html("ename: "+arr.ename);
+			let p3 = $("<p></p>").html("dno: "+arr.dno);
+			let p4 = $("<p></p>").html("salary: "+arr.salary);
+			let p5 = $("<p></p>").html("comm: "+arr.comm);
+			let p6 = $("<p></p>").html("hiredate: "+arr.hiredate);
+			let p7 = $("<p></p>").html("phone: "+arr.phone);
+			let p8 = $("<p></p>").html("addr: "+arr.addr);
+			let p9 = $("<p></p>").html("mgr: "+arr.mgr);
+			let p10 = $("<p></p>").html("job: "+arr.job);
+			let p11 = $("<p></p>").html("email: "+arr.email);
+			let p12 = $("<p></p>").html("jumin: "+arr.jumin);
+			$("#empInfo").append(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12);
+			}
+		})
+	})
+	
+	$.ajax({
+		url:"listDname.jsp",
+		success:function(arr){
+			$.each(arr, function(){
+				var option = $("<option></option>").html(this.dname);
+				$(option).attr("value",this.dno);
+				$("#deptList").append(option);
+			});
+		}
+	})
+});
+</script>
+</head>
+<body>
+	<select id="deptList"></select>
+	<select id="empList"></select>
+	<hr>
+	<div id="empInfo"></div>
+</body>
+</html>
