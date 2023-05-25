@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		let name = "이순신";
+		let member = {name:name}; 
+		$.ajax({
+			url: "TestOK.jsp",
+			data: member,
+			success: function(data){
+				$("#box").html(data);
+			}
+		});
+	});
+</script>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	/* 
+	let list = ["홍길동","이순신","김유신", "유관순", "강감찬"];
+	$.each(list, function(){
+		console.log("함수동작함");
+		console.log(this);
+		console.log("----------");
+	}); 
+	*/
+	
+	/* 
+	let list = [
+		{no:1, name:"홍길동", age:20},
+		{no:2, name:"이순신", age:21},
+		{no:3, name:"김유신", age:22},
+		{no:4, name:"유관순", age:23},
+		{no:5, name:"강감찬", age:24}
+	];
+	
+	$.each(list, function(){
+		console.log("함수동작함");
+		console.log(this.name);
+		console.log("--------");
+	}); 
+	*/
+	$("button").each(function(){
+		console.log("함수동작함");
+		console.log($(this).html());
+		console.log("---------");
+	});
+	
+	$("select").change(function(){
+		let b = $(this).val();
+		alert(b);
+	});
+	
+	$("button").click(function(){
+		let a = $(this).html();
+		alert(a);
+	});
+});
+</script>
+</head>
+<body>
+	<button>1</button>
+	<button>2</button>
+	<button>3</button>
+	<hr>
+	<select>
+		<option>사과</option>
+		<option>포도</option>
+		<option>수박</option>
+		<option>오렌지</option>
+	</select>
+	
+</body>
+</html>
