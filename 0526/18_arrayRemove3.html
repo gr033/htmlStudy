@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+//조건에 맞는 데이터 삭제
+	Array.prototype.remove = function(index){
+		this.splice(index, 1);
+	}
+	
+	let arr = [52, 271, 103, 32, 129];
+	for(let i=arr.legnth-1;i>=0;i--){
+		if(arr[i]>100){
+			arr.remove(i);
+		}
+	}
+	console.log(arr);
+</script>
+</head>
+<body>
+
+</body>
+</html>

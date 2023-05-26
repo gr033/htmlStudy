@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function Student(name, kor, math, eng, sci){
+		this.이름 = name;
+		this.국어 = kor;
+		this.수학 = math;
+		this.영어 = eng;
+		this.과학 = sci;
+	}
+
+	Student.prototype.getSum = function(){
+		return this.국어+this.수학+this.영어+this.과학;
+	}
+	Student.prototype.getAverage = function(){
+		return this.getSum()/4;
+	}
+	Student.prototype.toString = function(){
+		return this.이름+'\t'+this.getSum()+'\t'+this.getAverage();
+	}
+	
+	let students = [];
+	students.push(new Student("홍길동"), 90, 90, 90, 90);
+	students.push(new Student("홍길순"), 90, 90, 90, 90);
+	students.push(new Student("홍관순"), 90, 90, 90, 90);
+	students.push(new Student("유관순"), 90, 90, 90, 90);
+	students.push(new Student("유병재"), 90, 90, 90, 90);
+	
+	let output = "이름\t총점\t평균\n";
+	for(let i in students){
+		output += students[i].toString() + '\n';
+	}
+	alert(output);
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

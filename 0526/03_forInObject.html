@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		let kim = {
+				name:"김유신",
+				age: 20,
+				addr:"서울",
+				phone:"010-1234-5678"
+		}
+		console.log('age' in kim);
+		console.log('kor' in kim);
+		
+		/* $.each(kim, function(key, item){
+			console.log(key, this, kim[key]); */
+			
+			/* console.log(this);
+			//여기서 this는 속성의 value를 의미 */
+		})
+		
+		/* for(let key in kim){
+			//kim이 가지고 있는 속성을 하나씩 가져온다.
+			console.log(key);
+	});
+		} */
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

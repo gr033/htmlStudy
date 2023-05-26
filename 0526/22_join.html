@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	//서버로 넘어가기 전에 사용자의 입력값이 바람직한지 검사
+	//유효성 겁사-> validation
+	//그것을 자바스크립트가 한다.
+	
+	$("#f").submit(function(){
+		let id = $("#id").val().trim();
+		if(id==""){
+			alert("아이디를 입력해주세요.");
+			return false;
+		}
+		
+		let pwd = $("#pwd").val().trim();
+		let chkpwd = $("#chkPwd").val().trim();
+		if(pwd != chkpwd){
+			alert("비밀번호와 비밀번호 확인이 다릅니다.");
+			return false;
+		}
+	})
+});
+
+</script>
+</head>
+<body>
+	<form action="joinOK.jsp" method="post" id="f">
+		아이디: <input type="text" name="id" id="id" required="required"><br>
+		비밀번호: <input type="password" name="pwd" id="pwd" required="required"><br>
+		비밀번호확인: <input type="password" id="chkPwd" required="required"><br>
+		이름: <input type="text" name="name" id="name" required="required"><br>
+		나이: <input type="number" name="age" id="age" required="required"><br>
+		이메일: <input type="text" name="email" id="email" required="required"><br>
+		URL: <input type="text" name="url" id="url" required="required"><br>
+		전화: <input type="text" name="phone" id="phone" required="required"><br>
+		<input type="submit" value="확인">
+		<input type="reset" value="다시입력">
+	</form>
+</body>
+</html>

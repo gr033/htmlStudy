@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+
+	$(function(){
+		$("#btnOK").click(function(){
+			$("#geumjin").empty();
+			let jumin = $("#jumin1").val() + $("#jumin2").val();
+			let today = new Date();
+			let year = today.getFullYear();
+			console.log(year);
+			let user_year;
+			let age;
+			if(jumin[6]==1 || jumin[6]==2){
+				user_year = 1900+eval(jumin[0]+jumin[1]);
+				age = year-user_year;
+			}else if(jumin[6]==3 || jumin[6]==4){
+				user_year = 2000+eval(jumin[0]+jumin[1]);
+				age = year-user_year;
+			}
+			let cancer = "대상 암검진 항목: ";
+			console.log(jumin[6]);
+			if(age>=50 && age%2==year%2){
+				switch(jumin[6]){
+				case '1': cancer += "위암, 간암, 일반암"; break;
+				case '2': cancer += "위암, 간암, 일반암, 유방암, 자궁암"; break;
+				}
+			}else if(age>=40 && age%2==year%2){
+				switch(jumin[6]){
+				case '1': cancer += "위암, 간암, 일반암, 대장암"; break;
+				case '2': cancer += "위암, 간암, 일반암, 대장암, 유방암, 자궁암"; break;
+				}
+			}else{
+				cancer = '무료 암검진 대상자가 아닙니다.';
+			}
+			$("#geumjin").html(cancer);
+		})
+	});	
+
+</script>
+</head>
+<body>
+<h2>무료 암검진 대상자 확인</h2><br>
+주민번호를 입력하세요. <input type="text" id="jumin1">-<input type="text" id="jumin2"><br>
+<button id="btnOK">확인</button><hr>
+<span id="geumjin"></span>
+<!-- 
+사용자로부터 주민번호를 입력받아 무료 암검진 대상자인지 판별하는 웹 문서 작성
+무료 암검진 대상자는 나이가 40세 이상이고 올해가 짝수년도라면 짝수년도에 태어난 사람, 
+올해가 홀수년도라면 홀수년도에 태어난 사람이다.
+검진항목 
+40세 이상 남성: 위암, 간암, 일반암
+40세 이상 여성: 위암, 간암, 일반암, 유방암, 자궁암
+50세 이상 남성: 위암, 간암, 일반암, 대장암
+50세 이상 여성: 위암, 간암, 일반암, 대장암, 유방암, 자궁암
+-->
+</body>
+</html>

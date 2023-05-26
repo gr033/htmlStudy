@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	let students = [];
+	students.push({이름: '윤인성', 국어: 87, 수학: 98, 영어: 88, 과학: 95});
+	students.push({이름: '홍길동', 국어: 91, 수학: 50, 영어: 40, 과학: 79});
+	students.push({이름: '연하진', 국어: 78, 수학: 64, 영어: 80, 과학: 74});
+	students.push({이름: '구지연', 국어: 87, 수학: 72, 영어: 90, 과학: 86});
+	students.push({이름: '나선주', 국어: 64, 수학: 78, 영어: 46, 과학: 89});
+	students.push({이름: '윤아린', 국어: 86, 수학: 76, 영어: 87, 과학: 95});
+	students.push({이름: '윤명월', 국어: 82, 수학: 89, 영어: 98, 과학: 68});
+	students.push({이름: '김미화', 국어: 75, 수학: 80, 영어: 97, 과학: 83});
+	students.push({이름: '박아현', 국어: 68, 수학: 46, 영어: 90, 과학: 80});
+	students.push({이름: '서준서', 국어: 48, 수학: 50, 영어: 46, 과학: 97});
+	
+	for(let i in students){
+		students[i].getSum = function(){
+			return this.국어+this.수학+this.영어+this.과학;
+		}
+		students[i].getAverage = function(){
+			return this.getSum()/4;
+		}
+	}
+	
+	let output = "이름\t총점\t평균\n";
+	for(let i in students){
+		with(students[i]){
+		output += 이름 + '\t' + getSum() + '\t' + getAverage() + '\n';
+		}
+	}
+	alert(output);
+</script>
+</head>
+<body>
+
+</body>
+</html>
+		

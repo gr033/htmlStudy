@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function Rectangle(width, height){
+		this.width = width;
+		this.height = height;
+	}
+	
+	Rectangle.prototype.getArea = function(){
+		return this.width*this.height;
+	}
+	
+	let r = new Rectangle(5,7);
+	r.width = -2;
+	//객체의 속성에 접근하지 못하도록 하고
+	//setter를 사용하여 캡슐화한다.
+	alert('면적: '+r.getArea());
+</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style type="text/css">
+	.high_light{
+		background: yellow;
+	}
+	.over{
+		background: skyblue;	
+	}
+</style>
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		
+		var today = new Date();
+		var year = today.getFullYear();
+		var month = today.getMonth();
+		let schedule_date;
+		let arr_sc = [];
+		
+		function loadCalendar(year, month){
+			$("tbody").empty();
+			$("#Calendar").empty();
+			var start = new Date(year,month,1);
+			var day = start.getDay();
+			
+			var last = new Date(year, month+1, 0);
+			console.log(last);
+			var lastDate = last.getDate();
+			$("#Calendar").html(year+"년 "+ (month+1)+"월");
+			var str = "<tr>";
+			for(j=1;j<=day;j++){str += "<td>&nbsp;</td>";}
+			for(i=1; i<=lastDate; i++){
+				str += "<td>"+i+"</td>";
+				if((i+day) % 7== 0){
+					str += "</tr><tr>";
+				}
+			}
+			str += "</tr>";
+			$("tbody").html(str);	
+
+			$("td").click(function(){
+				$("td").removeClass("high_light");
+				$(this).addClass("high_light");
+				let date = $(this).html();
+				$("#date").html(year+"년 "+ (month+1)+"월 "+date+"일");
+				schedule_date = year+'/';
+				if(month<10){
+					schedule_date+="0"+(month+1)+'/';
+				}else{
+					schedule_date+=(month+1)+'/';
+				}
+				if(date<10){
+					schedule_date+='0'+date;
+				}else{
+					schedule_date+=date;
+				}
+				console.log(schedule_date);
+				
+				loadSchedule();
+			});
+			$("td").mouseenter(function(){
+				$("td").removeClass("over");
+				$(this).addClass("over");
+			});
+		}	
+		
+		function loadSchedule(){
+			$.ajax({
+				url: "findSchedule.jsp",
+				data: {date: schedule_date},
+				success: function(data){
+						$("#schedule_list").empty();
+						arr_sc=data;
+					$.each(data, function(i){
+						let p = $('<li value= "'+i+'"></li>').html(this.event_content);
+						console.log(arr_sc);
+						$("#schedule_list").append(p);
+					});
+				}
+			});
+		}
+		$("#schedule_list").on("dblclick", "li", function(){
+			let v = $(this).val();
+			let no = arr_sc[v].no;
+			console.log(arr_sc[v].no);
+			$.ajax({
+				url: "deleteSchedule.jsp",
+				data: {no: no},
+				success: function(re){
+					alert("삭제 성공");
+					loadSchedule();
+				}
+			})
+		})
+		
+		loadCalendar(year, month);
+		
+		
+		$("#last").click(function(){
+			month --;
+			if(month<0){
+				month=11;
+				year--;
+			}
+			loadCalendar(year, month);
+		});
+		$("#next").click(function(){
+			month ++;
+			if(month>11){
+				month=0;
+				year++;
+			}
+			loadCalendar(year, month);
+		});
+		$("#btnUpdate").click(function(){
+			let content = $("#content").val();
+			console.log(schedule_date);
+			console.log(content);
+			$.ajax({
+				url: "updateSchedule.jsp", 
+				data: {str:schedule_date, content:content},
+				success: function(){
+					console.log(schedule_date);
+					alert("입력 성공");
+					loadSchedule();
+				}
+			});
+		});
+	})
+</script>
+</head>
+<body>
+	<h1 id="Calendar"></h1>
+	<button id="last">지난달</button>
+	<button id="next">다음달</button><br>
+	<table border="1" width="50%">
+		<thead>
+			<tr>
+				<th>일</th>
+				<th>월</th>
+				<th>화</th>
+				<th>수</th>
+				<th>목</th>
+				<th>금</th>
+				<th>토</th>
+			</tr>
+		</thead>
+		<tbody></tbody>
+	</table>
+	<hr>
+	<div id="date"></div>
+	일정추가: <input type="text" id="content">
+	<button id="btnUpdate">추가</button>
+	<ul id="schedule_list"></ul>
+</body>
+</html>

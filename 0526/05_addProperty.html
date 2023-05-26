@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	let student = {};
+	student.이름 = "김유신";
+	student.국어 = 100;
+	student.영어 = 80;
+	student.수학 = 60;
+	delete(student.영어);
+	student.toString = function(){
+		let output = "";
+		for(let key in this){
+			if(key != "toString"){
+				output+=key + '\t' + this[key] + '\n';
+			}
+		}
+		return output;
+	}
+	alert(student.toString());
+</script>
+</head>
+<body>
+
+</body>
+</html>

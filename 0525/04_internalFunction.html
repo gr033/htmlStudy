@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+	/* 
+	$(function(){
+		$("#btnOK").click(function(){
+			var data = $("#data").val();
+			if(isNaN(data)){
+				//not a number
+				console.log('글자');
+			}else{
+				console.log("숫자");
+			}
+		});
+	}); 
+	*/
+	let data ="alert('ok')";
+	eval(data);
+	
+	
+	/*
+	let data1 = "(3+4+2)*10";
+	let result = eval(data1);
+	console.log(result); 
+	*/
+	
+	
+	
+	/* 
+	let data = "1234";
+	console.log(typeof(data));
+	let data1 = eval(data);
+	let data2 = parseInt(data);
+	let data3 = parseFloat(data);
+	
+	console.log(data1, typeof(data1));
+	console.log(data2, typeof(data2));
+	console.log(data3, typeof(data3)); 
+	*/
+	
+</script>
+</head>
+<body>
+	데이터: <input type="text" id="data">
+	<button id="btnOK">확인</button>
+</body>
+</html>

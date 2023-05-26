@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var today = new Date();
+		var year = today.getFullYear();
+		var month = today.getMonth();
+		
+		function loadCalendar(){
+			$("tbody").empty();
+			$("h1").empty();
+			var start = new Date(year,month,1);
+			var day = start.getDay();
+			
+			var last = new Date(year, month+1, 0);
+			console.log(last);
+			var lastDate = last.getDate();
+			$("h1").html(year+"년 "+ (month+1)+"월");
+			var str = "<tr>";
+			for(j=1;j<=day;j++){str += "<td>&nbsp;</td>";}
+			for(i=1; i<=lastDate; i++){
+				str += "<td>"+i+"</td>";
+				if((i+day) % 7== 0){
+					str += "</tr><tr>";
+				}
+			}
+			str += "</tr>";
+			$("tbody").html(str);	
+		}	
+		loadCalendar();
+	})
+</script>
+</head>
+<body>
+	<h1></h1>
+	<table border="1" width="50%">
+		<thead>
+			<tr>
+				<th>일</th>
+				<th>월</th>
+				<th>화</th>
+				<th>수</th>
+				<th>목</th>
+				<th>금</th>
+				<th>토</th>
+			</tr>
+		</thead>
+		<tbody></tbody>
+	</table>	
+</body>
+</html>

@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+	.date{
+		width: 10px;
+	}
+	.mark{
+		color: red;
+		float: right;
+		width: 5px;
+		margin-right: 2px;
+		
+	}
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		
+		var loadDateInMonth = function(){
+			var str = thisYear+"/";
+			if(thisMonth < 10){
+				str += "0"+thisMonth;
+			}else{
+				str += thisMonth;
+			}
+			
+			var data = {date:str};
+			$.ajax({
+				url:"listDate.jsp",
+				data:data,
+				success:function(arr){	
+					console.log("배열길이:",arr.length);
+					console.log("배열길이:",arr);
+								
+					var tdlist = $("td");
+					console.log(tdlist.length);
+					
+					$("td").each(function(){
+						
+						if( $(this).html() != ""  ){
+							var a = eval($(this).html());
+							for(i=0; i<arr.length; i++){
+								console.log(arr[i]);
+								var b = eval(arr[i]);
+								if(a == b){
+									var div = $("<div></div>").html("*").addClass("mark");
+									$(this).append(div);
+								}
+							}
+						}
+					});
+				}
+			})
+		}
+		
+		$("#event_list").on("dblclick","li",function(){
+			var no = $(this).attr("no");
+			var data = {no:no};
+			$.ajax({
+				url:"deleteSchedule.jsp",
+				data:data,
+				success:function(re){
+					loadSchedule();
+				}
+			})
+		});
+		
+		var loadSchedule= function(){
+			$("#event_list").empty();
+			
+			var data = {event_date:event_date};
+			
+			$.ajax({
+				url:"findSchedule.jsp",
+				data:data,
+				success:function(arr){
+					$.each(arr, function(){
+						var li = $("<li></li>").html(this.event_content);
+						$(li).attr("no",this.no);
+						$("#event_list").append(li);
+					});
+				}
+			});
+		}
+		
+		var event_date;
+		$(document).on("click", "td", function(){
+			var thisDate = $(this).html();			
+			var str = thisYear+"/";
+			if(thisMonth < 10){
+				str += "0"+thisMonth+"/";
+			}else{
+				str += thisMonth+"/";
+			}
+			
+			if(thisDate < 10){
+				str += "0"+thisDate;
+			}else{
+				str += thisDate; 
+			}
+			event_date = str;
+			$("#result").html(str);
+			
+			loadSchedule();
+			
+		});
+		
+		var thisYear;
+		var thisMonth;
+		
+		var calendar = function(year, month){
+			
+			thisYear= year;
+			thisMonth = month;
+			
+			console.log("year:",year);
+			console.log("thisYear:",thisYear);
+			console.log("month:",month);
+			console.log("thisMonth:",thisMonth);
+			console.log("----------------------------------")
+			var start = new Date(year,month,1);
+			console.log(start);
+			var day = start.getDay();
+			console.log(day);
+			
+			var last = new Date(year, month+1, 0);
+			console.log(last);
+			var lastDate = last.getDate();
+				
+			$("h1").html(year+"년 "+ (month+1)+"월");
+			
+			var str = "<tr>";
+			
+			for(j=1;j<=day;j++){
+				str += "<td></td>";
+			}
+			
+			for(i=1; i<=lastDate; i++){
+				str += "<td>"+i+"</td>";
+				if((i+day) % 7== 0){
+					str += "</tr><tr>";
+				}
+			}
+			str += "</tr>";
+			$("tbody").html(str);
+			
+			$("td").addClass("date");
+			loadDateInMonth();
+		}
+		var today = new Date();
+		var year = today.getFullYear();
+		var month = today.getMonth();
+		calendar(year, month);
+		
+		$("#btnNext").click(function(){
+			thisMonth++;
+			if(thisMonth>11 ){
+				thisYear++;
+				thisMonth=0;				
+			}
+			calendar(thisYear, thisMonth);			
+		});
+		
+		$("#btnPrev").click(function(){
+			thisMonth--;
+			if(thisMonth < 0 ){
+				thisYear--;
+				thisMonth=11;				
+			}
+			calendar(thisYear, thisMonth);			
+		});
+		
+		$("#btnAdd").click(function(){
+			var data = 
+				{
+					event_date:event_date, 
+					event_content:$("#event_content").val()
+				};
+			
+			$.ajax({
+				url:"updateSchedule.jsp",
+				data:data,
+				success:function(re){
+					console.log(re);
+					loadSchedule();
+				}
+			})
+		});
+		
+	})
+</script>
+</head>
+<body>
+	<h1></h1>
+	<button id="btnPrev">이전달</button>
+	<button id="btnNext">다음달</button>
+	<table border="1" width="50%">
+		<thead>
+			<tr>
+				<th>일</th>
+				<th>월</th>
+				<th>화</th>
+				<th>수</th>
+				<th>목</th>
+				<th>금</th>
+				<th>토</th>
+			</tr>
+		</thead>
+		<tbody></tbody>
+	</table>	
+	<hr>
+	<div id="result"></div>
+	일정추가 : <input type="text" id="event_content">
+	<button id="btnAdd">추가</button>
+	<ul id="event_list"></ul>
+</body>
+</html>
