@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 사용자의 브라우저가 모바일용이면 모바일 서비스로 이동시킨다. -->
+<script type="text/javascript">
+	let app = navigator["userAgent"];
+	app = app.toLowerCase();
+	console.log(app);
+	if(app.match("mobile")){
+		location.href="13_shop_mobile.html";
+	}
+</script>
+</head>
+<body bgcolor="yellow">
+	<h2>컴퓨터 서비스입니다.</h2>
+</body>
+</html>

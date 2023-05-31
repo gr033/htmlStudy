@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		let timer;
+		$("#btnStart").click(function(){
+			timer = setInterval(function(){
+				$("span").html(new Date());
+			}, 1000);
+		});
+		
+		$("#btnStop").click(function(){
+			clearInterval(timer);
+		});
+	});
+</script>
+</head>
+<body>
+	현재 시각: <span></span>
+	<hr>
+	<button id="btnStart">Start</button>
+	<button id="btnStop">Stop</button>
+</body>
+</html>

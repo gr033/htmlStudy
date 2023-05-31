@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		let child;
+		$("#btnNew").click(function(){
+			child = window.open("","","width=300, height=200");
+		});
+		
+		$("#btnScreen").click(function(){
+			let width = screen.width;
+			let height = screen.height;
+			child.moveTo(0,0);
+			child.resizeTo(width, height);
+		});
+		
+		$("#btnMove").click(function(){
+			setInterval(function(){
+				child.resizeBy(-20,-20);
+				child.moveBy(10,10);
+			},2000);
+		});
+	})
+</script>
+</head>
+<body>
+	<button id = "btnNew">새창 열기</button>
+	<button id = "btnScreen">스크린 크기에 맞게 조절하기</button>
+	<button id = "btnMove">크기조절하고 이동하기</button>
+</body>
+</html>

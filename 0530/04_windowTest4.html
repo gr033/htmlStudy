@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		let child;
+		$("#btnNew").click(function(){
+			child = window.open("","","width=300,height=200");
+		});
+		$("#btnWrite").click(function(){
+			child.document.write("<h1>Hello</h1>");
+		});
+	});
+</script>
+</head>
+<body>
+	<button id="btnNew">새창열기</button>
+	<button id="btnWrite">새창에 출력</button>
+</body>
+</html>

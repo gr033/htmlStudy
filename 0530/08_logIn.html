@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#btnLogin").click(function(){
+			let id = $("#id").val();
+			let pwd = $("#pwd").val();
+			if(id=="tiger" && pwd=="1234"){
+				location.href="09_index.html";
+			}
+		});
+	});
+</script>
+</head>
+<body>
+	<h2>로그인</h2>
+	<hr>
+	아이디 : <input type="text" id="id"><br>
+	비밀번호 : <input type="password" id="pwd"><br>
+	<button id="btnLogin">로그인</button>
+</body>
+</html>

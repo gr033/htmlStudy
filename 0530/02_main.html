@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#btn").click(function(){
+		let a = window.open("03_addr.html");
+		console.log(a);
+		setTimeout(function(){
+			let addr = a.document.getElementById("addr");
+			console.log(addr);
+			addr.value = "서울시 마포구 서교동";
+		}, 500);
+	});
+})
+</script>
+</head>
+<body>
+	주소 : <input type="text" id="addr">
+	<button id="btn">새창열기</button>
+</body>
+</html>

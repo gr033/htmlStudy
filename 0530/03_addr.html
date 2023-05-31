@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#btnOK").click(function(){
+				let a = window.opener;
+				let addr = a.document.getElementById("addr");
+				addr.value = $("#addr").val();
+				window.close();
+		});
+	});
+
+</script>
+</head>
+<body>
+	주소: <input type="text" id="addr">
+	<br>
+	<button id="btnOK">확인</button>
+</body>
+</html>
